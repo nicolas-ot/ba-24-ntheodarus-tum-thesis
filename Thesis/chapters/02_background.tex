@@ -1,3 +1,81 @@
 \chapter{Background}
 
-\textit{Note: Describe each proven technology / concept shortly that is important to understand your thesis. Point out why it is interesting for your thesis. Make sure to incorporate references to important literature here.}
+% \textit{Note: Describe each proven technology / concept shortly that is important to understand your thesis. Point out why it is interesting for your thesis. Make sure to incorporate references to important literature here.}
+
+\section{Mobile-Optimized Applications and Accessibility for Elderly Users}
+
+It is crucial that the application is both mobile-optimized and also accessible to elderly users.
+Since the author wants to use data of people typing on their smartphones, the application needs to be mobile-optimized.
+Mobile-optimized application ensures that the data gathered by this application captures typing pattern of its users correctly.
+Irregularities, such as typing mistakes or longer typing interval, should not be caused by the difficulty of using this application.
+Instead this irregularities should reflect human error, that most likely to happens more frequently with older subjects.
+Among other thigs, the \ac{UI} design of the application should be clean and minimalist, focusing on essential features and contents.
+Unnecessary elements and visual clutters should be removed to create an intuitive \ac{UI} that is easy to navigate on smaller screens.
+Since there are many types and sizes of smartphones, it is also important to build a responsive web application that is able to adjust to common screen sizes.
+
+The application also need to be accessible for elderly users.
+This is done to prevent a false positive condition, where significantly more typing errors happen on elderly subjects because of the difficulty of using the application.
+Designing an accessible \ac{UI} for the elderly requires some considerations as suggested by Gomez-Hernandez et. al. in their research in 2023\cite{hernandez2023}:
+\begin{enumerate}
+    \item Bigger Interactive Elements: The size of interactive elements, such as buttons and forms, need to be bigger to make them more accessible.
+    This improvement could help with possible vision or motoric impairments.
+    \item High contrast: Another method to help with vision impairment.
+    This could help increase readability.
+    \item Font Selection: The font used should be easily readable, especially on smaller screens.
+    \item Spacing: Enough spacing should be added to improve readability und user experience.
+\end{enumerate}
+
+
+\section{Backend Architecture: Java Spring Boot}
+On the backend side of the application, Java Spring Boot framework is utilised to manage and process data that are sent by the frontend of the application.
+The Spring Framework is an application framework and inversion of control container for the Java programming language.
+Spring Boot is an open-source Java framework for applications based on Spring to help project startup and management easier.
+This framework provides libraries that help to develop a scalable, maintainable and secure web applications.
+It is important to develop the application in this manner so that new features and improvement could easily be added during or after the writing of this thesis.
+If the occassion arises, this application would also be ready to be reused for a possible follow-up research on this topic.
+
+Spring Boot provides functionalities that help to ensure clean architecture and adherence to coding principles, such as DRY (Don't Repeat Yourself).
+Another important feature provied by Spring Boot is RESTful services, that support separation of the client and the server.
+Other than aiding on building a clean architecture, RESTful services also further ensure the possibility of reusing the code for further researches.
+This application uses \ac{DAO} and \ac{DTO} patterns to manage data efficiently.
+This separation of concerns between \ac{DAO} and \ac{DTO} adheres to clean architecture principles, improving maintainability and testability.
+
+\section{Database Management: PostgreSQL}
+PostgreSQL is an open-source, object-relational database system known for its scalability, reliability and support for complex queries.
+These attributes make PostgreSQL ideal for storing a huge amount typing data and keystroke logs.
+Features such as JSONB data type that is offered by PostgreSQL also help to simplify data processing and storing, especially data of keystroke logs. 
+Another reason why PostgreSQL is used in this project is its indexing and search capabilities.
+This will be crucial for fast retrieval of user data, allowing efficient typing pattern analysis that would be useful if instant analysis feature is ever built.
+
+\section{Large Language Models: Llama3}
+The Llama3 is the latest \ac{LLM} develop by Meta inc.
+In addition to Llama3's impressive performance compared to other \ac{LLM}s, Llama3 is multilingual and can support both english and german language well.
+This makes Llama3 the perfect language model to use for this thesis.
+In this thesis, Llama3 will be used to chat with the users in real-time.
+The language model is prompted to try to get as much response from the users as possible, so that the typing data can be collected.
+
+It is interesting to see whether \ac{LLM}s such as Llama3 would be able to also analyze the users' typing data.
+It can potentially help identify changes and irregularities in typing pattern that might indicate the age of the user.
+If this is possible, a real-time analysis of the typing pattern might be able to be implemented with the help of language models.
+This topic is, however, not in the scope of this thesis and is only a possible future research.
+
+\section{Containerization: Docker}
+To further promotes the scalability of the application, the author utilizes Docker.
+Docker is a platform for delivering software in packages called containers.
+Containerization is an important part of deploying a scalable application across various environments.
+Docker allows applications to be deployed separately (frontend, backend, database and \ac{LLM}) in their own separated containers.
+This makes it easier for the application to be reused and rebuild in other environments, such as on the university servers.
+
+\section{Pattern Recognition and Analysis of Typing Pattern}
+To recognize typing pattern of users from different age groups, a statistical analysis of the typing pattern will be carried out.
+
+TODO: find and explain statistical analysis correlation methods
+
+Metrics such as keystroke intervals, typing speed, and error rates will be analyzed to distinguish typing patterns between each age groups. 
+
+TODO: find correlation between typing metrics and age group based on the statistical analysis.
+
+TODO: find pattern recognition method or algo such as Hidden Markov Models (HMM), Dynamic Time Warping (DTW), or Neural Networks 
+
+\section{Security and Privacy in Data Collection}
+TODO: do we need this part? Privacy is not as important since the data is not from patients.
