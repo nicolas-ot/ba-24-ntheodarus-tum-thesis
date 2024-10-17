@@ -2,7 +2,27 @@
 
 % Add additional packages
 \usepackage{microtype}
+\usepackage[german,english]{babel}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{longtable}
+% \usepackage{tikz}
+% \usepackage{ifthen}
+% \usepackage{xstring}
+% \usepackage{calc}
+% \usepackage{pgfopts}
+
+% \usepackage{tikz}
+% \usepackage{tikz-uml}
+
+\newcommand{\closeline}[1]{\underline{\smash{#1}}}
+\newcommand{\leftenum}[2]{\begin{enumerate}[leftmargin=*]\item[#1] #2\end{enumerate}}
+\newcommand{\rightenum}[2]{\begin{enumerate}[leftmargin=3cm]\item[#1] #2\end{enumerate}}
+%First arg: Enumeration character, second: item. Important: use "\item ..." as second argument
+\newcommand{\shortitem}[2]{\begin{minipage}[t]{#1}\begin{itemize}[noitemsep,leftmargin=*,topsep=0pt,parsep=0pt,partopsep=0pt] #2 \end{itemize}\end{minipage}}
+
 
 % Define a default path for graphics
-%\graphicspath{{figures/}}
+\graphicspath{{figures/}}
 
