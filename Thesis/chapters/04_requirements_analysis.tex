@@ -285,7 +285,7 @@ The following diagram shows the key objects and their relations with other objec
 
 \textbf{Classes}: Message, Conversation, Keystroke
 
-Conversation: represents the whole chatting session with a unique ID.
+Conversation: Represents the whole chatting session with a unique ID.
 When the user enters an ID, the backend server will look for a conversation that has the same ID.
 If such object exists, then the server will fetch the conversation along with the Messages that belong to this conversation object.
 If the object does not exist, then the server will initialise a new conversation object with ID that just has been given by the user.
@@ -294,14 +294,14 @@ To improve security, each conversation is also given the attribute deactivated.
 If this attribute is set, then the conversation will not accessible anymore.
 This helps prevent unwanted actors to access chat sessions of users that are already finished.
 
-Message: represents each message that the user or the \ac{LLM} sent.
+Message: Represents each message that the user or the \ac{LLM} sent.
 Each message object is related to one conversation.
 Whereas each conversation contains between zero and multiple messages.
 The messages from the \ac{LLM} also need to be saved, so that the whole conversation can be loaded again, after the user exits a chat session.
 As a result, the message objects need to have an attribute to give information, whether this message was created by the user or by the \ac{LLM}.
 This information is saved in the boolean attribute "user".
 
-Keystroke: represents each keystroke that the user types.
+Keystroke: Represents each keystroke that the user types.
 Each message object will have between one and multiple keystrokes.
 The keystroke object is the most important object for this thesis, since the reseach will be focused on the keystrokes of the user.
 Each keystroke object will have three attributes: pressedKey, timestamp, and timeSinceLastKey.
@@ -347,14 +347,19 @@ This bring the application back to the state of waiting for the user to send a m
 
 \subsection{User Interface}
 
+\subsubsection{Technology stack}
 % \textit{Note: Show mockups of the user interface of the software you develop and their connections / transitions. You can also create a storyboard. \textbf{Important:} Describe the mockups and their rationale in the text.}
 
-The application \ac{UI} for this research is primarily built using the popular Javascript framework, React.JS.
+\textbf{React.JS}: The application \ac{UI} for this research is primarily built using the popular Javascript framework, React.JS.
 React is a free and open-source front-end JavaScript library for building component based \ac{UI}.
 This librariy is known for its flexibility and efficiency, which is the main reason why React is being used for this project.
 React was crucial for the foundation of the application, making it easier to create responsive and interactive elements.  
 
-\subsection{UI Mockup and Design Process}
+\textbf{ Material-UI}: Material-UI, is a React UI library based on Google’s Material Design principles.
+This library facilitates the development of \ac{UI} by providing pre-designed components like buttons, forms, and avatars. 
+Its seamless integration accelerates development, making it possible  to deliver a polished interface efficiently.
+
+\subsubsection{UI Mockup and Design Process}
 
 Designing the \ac{UI} is a crucial first step in developing an application.
 The design should be intuitive and easy to use for the user.
@@ -365,4 +370,35 @@ This is done to visualize the design and determine whether the design is suitabl
 
 It is a widely known fact, that an application, especially mobile application such as the one being used for this project, is harder to use for the elderly.
 One of the main reasons would be visual impairment that often happen more the older a person gets.
-To counteract this, the design of the application is focused on accessible \ac{UI} features, such as:
+To counteract this, the design of the application is focused on \ac{UI} features, such as bigger interactive elements, high contrast, font selection, spacing, appropriate color choices, and  centralized content.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=7cm]{message_mockup}
+    \caption{\ac{UI} mockup}\label{mockup}
+\end{figure}
+
+The final \ac{UI} mockup did not manage to achieve the intended design.
+As can be seen on Figure~\ref{mockup}, the design of the application is not yet user-friendly to the more senior age groups.
+The font is too small and the text is too cluttered, are some of the problems that this design has.
+However, this mockup design served its purpose as a base design.
+Since, as mentioned before, React.JS is known for its flexibility, this problem can easily be solved on the implementation part of the application. 
+This mockup serves as a guideline for the layout of the application, with a message input component at the bottom and color-coded text bubbles based on whether the message was from the user or the system.
+
+This adaptation and improvement from the mockup design demonstrated the value of agile development approach.
+Changes and adjustments to initial plan are a common accurance in the world of software development.
+Many requirements are sometimes missed during planning.
+This is one of the main reason that a software should be easily adjustable to ever-changing real world constraints and feedbacks.
+While the mockup played a significant role in early planning, the ability to adapt ensured the final product met practical requirements.
+ 
+\subsubsection{Implementation}
+
+Once the mockup is established, the development moves to the implementation phase.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=7cm]{login}
+    \caption{login page}\label{login}
+\end{figure}
+
+TODO: explain implementation process, packages choosing decision, decision reasoning, etc.
