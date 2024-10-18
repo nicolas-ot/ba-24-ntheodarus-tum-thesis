@@ -329,7 +329,7 @@ In this case, the chat session needs to be initialised first.
 After the chat session is initialised, then a prompt is given to the \ac{LLM}.
 The first message from the \ac{LLM} is then sent to the user.
 
-Either after the first message from the \ac{LLM} or the whole chat history of the chat session is loaded, the application enters the next state.
+After either the first message from the \ac{LLM} or the whole chat history of the chat session is loaded, the application enters the next state.
 In this state, the application waits for the user to type and send the message.
 Message that is sent by the user is then processed in the backend server.
 To begin with, the message is sent to the \ac{LLM}.
@@ -345,9 +345,24 @@ This bring the application back to the state of waiting for the user to send a m
     \caption{UML class diagram of the application domain}\label{state}
 \end{figure}
 
-
 \subsection{User Interface}
 
 % \textit{Note: Show mockups of the user interface of the software you develop and their connections / transitions. You can also create a storyboard. \textbf{Important:} Describe the mockups and their rationale in the text.}
 
-This is the user interface
+The application \ac{UI} for this research is primarily built using the popular Javascript framework, React.JS.
+React is a free and open-source front-end JavaScript library for building component based \ac{UI}.
+This librariy is known for its flexibility and efficiency, which is the main reason why React is being used for this project.
+React was crucial for the foundation of the application, making it easier to create responsive and interactive elements.  
+
+\subsection{UI Mockup and Design Process}
+
+Designing the \ac{UI} is a crucial first step in developing an application.
+The design should be intuitive and easy to use for the user.
+It is even more important for this application, since this application will be used by users from various age groups.
+The application should be comfortable to use by every age groups, so that the result is as accurate as possible.
+Early in development, \ac{UI} mockups is used before the actual implementation.
+This is done to visualize the design and determine whether the design is suitable for the purpose of the application
+
+It is a widely known fact, that an application, especially mobile application such as the one being used for this project, is harder to use for the elderly.
+One of the main reasons would be visual impairment that often happen more the older a person gets.
+To counteract this, the design of the application is focused on accessible \ac{UI} features, such as:
