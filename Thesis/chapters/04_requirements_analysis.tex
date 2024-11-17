@@ -73,19 +73,32 @@ Below is a list of the primary functional requirements:
 The nonfunctional requirements (NFR) define system constraints, performance criteria, and standards the system must adhere to. 
 These requirements are categorized using the FURPS+ model, as described in Bernd Bruegge's book \cite{bruegge2004object}, excluding functionality, which was covered in the functional requirements section.
 
-TODO: describe unrealisable functionalities
-
 \begin{itemize} 
-    \item [NFR1] \textbf{Usability}: The user interface must be easy to use, especially for elderly users.
+    \item [NFR1] \textbf{Usability and Accessibility}: The user interface must be easy to use, especially for elderly users.
     Design of the application should be accessible for the elderly with features such as large fonts, enough spacing, and clear visual indicators. 
     \item [NFR2] \textbf{Reliability}: The system must be able to run and save users' typing pattern without loss of data or functionality. 
     \item [NFR3] \textbf{Performance}: The system should give response to the user within 10 seconds after the user send a message. 
-    \item [NFR4] \textbf{Security}: All communication between the frontend and backend must be encrypted using HTTPS.
+    \item [NFR4] \textbf{Privacy}:
     The user's information other than their age should be anonym.
     Chat session of users should be able to be locked, so that it cannot be accessed anymore.
     \item [NFR5] \textbf{Adaptability}: The system must be able to scale to support more users, e.g. by adding more servers.
     It should also be possible to add functionalities such as real-time analysis. 
 \end{itemize}
+
+Among these requirements, the most challenging to implement is the adaptability and performance requirement.
+Adaptability requirement is challenging because it involves the system's ability to scale to support more users and functionalities.
+The system must be designed to be scalable and flexible to accommodate future changes and additions.
+It is a very time consuming process to design and develop a system that can be easily scaled and adapted to new functionalities.
+The development process of the application is unfortunately limited by time, which makes it hard to implement this requirement.
+
+The performance requirement is challenging because it involves the system's ability to respond to user input within 10 seconds.
+It is obvious that the respond time is largely dependent on the response time of the \ac{LLM}.
+On practice, the \ac{LLM} is able to respond within 10 seconds most of the time.
+However, there are times when the \ac{LLM} needs more time to respond, e.g. when the response is long.
+One of the way to solve this problem is to implement a streaming system, where the \ac{LLM} can send the response in chunks.
+This way, the user can already see the response while the \ac{LLM} is still typing the response.
+Here too, the time limitation of the thesis makes it hard to implement this solution.
+
 
 \section{System Models}
 
@@ -290,7 +303,7 @@ When the user enters an ID, the backend server will look for a conversation that
 If such object exists, then the server will fetch the conversation along with the Messages that belong to this conversation object.
 If the object does not exist, then the server will initialise a new conversation object with ID that just has been given by the user.
 Each conversation object also has age attribute, which give information about the age of the user to whom this object belongs to.
-To improve security, each conversation is also given the attribute deactivated.
+To improve privacy, each conversation is also given the attribute deactivated.
 If this attribute is set, then the conversation will not accessible anymore.
 This helps prevent unwanted actors to access chat sessions of users that are already finished.
 
@@ -347,7 +360,7 @@ This bring the application back to the state of waiting for the user to send a m
 
 \subsection{User Interface}
 
-\subsubsection{Technology stack}
+\subsubsection{Technology Stack}
 % \textit{Note: Show mockups of the user interface of the software you develop and their connections / transitions. You can also create a storyboard. \textbf{Important:} Describe the mockups and their rationale in the text.}
 
 \textbf{React.JS}: The application \ac{UI} for this research is primarily built using the popular Javascript framework, React.JS.
@@ -379,7 +392,7 @@ To counteract this, the design of the application is focused on \ac{UI} features
 \end{figure}
 
 The final \ac{UI} mockup did not manage to achieve the intended design.
-As can be seen on Figure~\ref{mockup}, the design of the application is not yet user-friendly to the more senior age groups.
+Figure~\ref{mockup} shows, that the design of the application is not yet user-friendly to the more senior age groups.
 The font is too small and the text is too cluttered, are some of the problems that this design has.
 However, this mockup design served its purpose as a base design.
 Since, as mentioned before, React.JS is known for its flexibility, this problem can easily be solved on the implementation part of the application. 
