@@ -1,6 +1,6 @@
 \chapter{Evaluation}
 
-\textit{Note: If you did an evaluation / case study, describe it here.}
+% \textit{Note: If you did an evaluation / case study, describe it here.}
 
 \section{Design}
 
@@ -43,9 +43,17 @@ This is the expected average duration between keystrokes for the data that has b
     60+      & 6 & 30 & 32.17 \\
     \bottomrule
     \end{tabular}
-    \caption{Amount of Unique Conversations of Each Age Groups}
+    \caption{Amount of unique conversations of each age groups.}
     \label{tab:unique_conversations}
 \end{table}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13cm]{message_length.png}
+    \caption{Box plot of message length of each age group.}
+    \label{box_plot_message_length}
+\end{figure}
+
 
 Table \ref{tab:unique_conversations} shows the number of unique conversations, number of messages sent and the average length of the message sent.
 In total, the application managed to gather data from 40 unique conversations.
@@ -56,6 +64,27 @@ The least amount of messages sent is by age group 0-24 with 26 messages.
 Regarding message length average, age group 25-39 has the longest message length average with 53.59 characters.
 Age group 40-59 has the second longest message length average with 48.56 characters.
 Age group 0-24 has the shortest message length average with 19.77 characters.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    \textbf{Age Group} & {Conversations} & Backspace Percentage (Mean) \\
+    \midrule
+    0-24     & 7 & 6.00 \\
+    25-39    & 9 & 6.63 \\
+    40-59    & 18 & 15.93 \\
+    60+      & 6 & 3.29 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Average of backspace percentage of each age groups.}
+    \label{tab:backspace_percentage}
+\end{table}
+
+Table \ref{tab:backspace_percentage} shows the average backspace percentage of each age group.
+Backspace percentage is calculated by dividing the number of backspace keystrokes by the total number of keystrokes.
+Age group 40-59 has the highest backspace usage percentage with 15.93\%.
+Age group 0-24 has the lowest backspace usage percentage with 6.63\%.
 
 
 \begin{table}[h]
@@ -72,9 +101,16 @@ Age group 0-24 has the shortest message length average with 19.77 characters.
     60+ & 285.72 & 137.01 \\
     \bottomrule
     \end{tabular}
-    \caption{Typing Behavior of Users in Different Age Groups}
+    \caption{Typing speed of users in different age groups.}
     \label{tab:typing_behavior}
 \end{table}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13cm]{typing_speed.png}
+    \caption{Box plot of typing speed of each age group.}
+    \label{box_plot_typing_speed}
+\end{figure}
 
 During the processing of the data, keysrokes duration that took longer than five seconds are truncated.
 This is done to remove data that is most likely caused by trivial factors, such as the user being away from keyboard.
@@ -107,11 +143,18 @@ This age group has the second slowest typing speed with an average duration of 2
     60+ & 279.32 & 132.83 \\
     \bottomrule
     \end{tabular}
-    \caption{Typing Behavior of Users in Different Age Groups}
+    \caption{Typing speed of users in different age groups with truncation.}
     \label{tab:typing_behavior_one}
 \end{table}
 
-In this next evaluation, the data is truncated further by removing the one-percenth quantile (\textless1\% and \textgreater99\%) of duration between keystrokes.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13cm]{typing_speed_two_seconds.png}
+    \caption{Box plot of typing speed of each age group with truncation.}
+    \label{box_plot_typing_speed_two_seconds}
+\end{figure}
+
+Next, the data is truncated further by removing the one-percenth quantile (\textless1\% and \textgreater99\%) of duration between keystrokes.
 This is done to remove outliers from the data.
 Table \ref{tab:typing_behavior_one} shows the average and standard deviation of duration between each keystrokes after data processing is done.
 
@@ -143,9 +186,17 @@ Versatility in typing speed of this group is low with a standard deviation of 13
     60+ & 274.03 & 132.96 \\
     \bottomrule
     \end{tabular}
-    \caption{Typing Behavior of Users in Different Age Groups}
+    \caption{Typing speed of users in different age groups with \ac{IQR} method.}
     \label{tab:typing_behavior_iqr}
 \end{table}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=13cm]{iqr.png}
+    \caption{Box plot of typing speed of each age group with iqr methods.}
+    \label{box_plot_typing_speed_iqr}
+\end{figure}
 
 In this evaluation, the data is processed by removing the \ac{IQR} of duration between keystrokes after removing keystrokes that took longer than five seconds.
 The ranking of the age groups in terms of average typing speed remains the same with the previous evaluation methods.
@@ -159,15 +210,19 @@ Lastly, age group 60+ that was previously the second least variable in typing sp
 \section{Findings}
 
 % \textit{Note: Interpret the results and conclude interesting findings}
+Backspace percentage average increases the older the age group is, except for age group 60+.
+A big jump in backspace percentage average is seen between age group 25-39 and 40-59 from 6.63\% to 15.93\%.
+Afterwards, the backspace percentage average decreases to 3.29\% for age group 60+.
 
-The data also shows that the older the age group, the slower the typing speed.
+The data shows that the older the age group, the slower the typing speed.
 This is consistent with the general knowledge that the older a person is, the slower their reaction time is.
 There is however an exception with age group 60+.
 This group has a faster typing speed than age group 40-59 in all of the evaluations.
 The fact that this group has the least amount of unique conversations might contribute to this result.
 
-Leaving out age group 25-39 on the first two evaluations, there is a trend where the older the age group, the less variable the typing speed is.
-The fact that there are only 9 unique conversations from this age group might also be a factor in this result.
+On the first two evaluations, i.e. evaluations without the \ac{IQR} method, if the data for age group 25-39 is left out, there is a trend where the older the age group, the less variable the typing speed is.
+Age group 25-39 is, however, an exception to this pattern, as it is the least variable group.
+The fact that there are only 9 unique conversations from age gorup 25-39 might contribute to this result.
 The standard deviation from the evaluation with the \ac{IQR} method shows no noticeable pattern.
 
 \section{Limitations}
@@ -183,4 +238,3 @@ Another limitation is the fact that the data is gathered from a specific group o
 This specific group of people might not be representative of the general population, thus impacting the generalizability of the result.
 The small sample size also makes the result less reliable.
 To improve the reliability of the result, the application should be used by a larger group of people.
-
