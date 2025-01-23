@@ -4,7 +4,7 @@
 
 \section{Design}
 
-\textit{Note: Describe the design / methodology of the evaluation and why you did it like that. E.g. what kind of evaluation have you done (e.g. questionnaire, personal interviews, simulation, quantitative analysis of metrics, what kind of participants, what kind of questions, what was the procedure?}
+% \textit{Note: Describe the design / methodology of the evaluation and why you did it like that. E.g. what kind of evaluation have you done (e.g. questionnaire, personal interviews, simulation, quantitative analysis of metrics, what kind of participants, what kind of questions, what was the procedure?}
 
 The evaluation process was done to assess both the functional and non-functional requirements of the system.
 This evaluation is done by processing the data collected from the users by the application.
@@ -15,74 +15,172 @@ Whether the data being saved is accurate or not should be clear through the eval
 
 \section{Objectives}
 
-\textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
+% \textit{Note: Derive concrete objectives / hypotheses for this evaluation from the general ones in the introduction.}
 
 The data can be compared to the expected data to see if the system is functioning correctly.
 An example of this would be to compare the average typing speed from the collected data and average typing speed data from other sources.
-On average, the typing speed of a person is 40 \ac{WPM} \cite{TypingCom2022}.
-Certain administrative positions require up to 60 \ac{WPM}.
-According to another resources, the average typing speed of most people is in the range of 40 to 120 WPM \cite{TypingPal}.
-40 being the average speed and 120 being the competitive speed, or in other words, the outlier.
-This translate to 300ms average duration between keystrokes for 40WPM and 100ms for 120WPM, if we consider that on average, there are 5 characters per word.
-The data collected from the system should be in this range.
+On average, the typing speed of a person on mobile devices is 36.2 \ac{WPM} with 2.3\% uncorrected errors \cite{Palin2019}.
+This translate to 331.49 ms average duration between keystrokes, if we consider that on average, there are 5 characters per word.
+
+Typing speed also varies depending ont he age of the user.
+Age group 10-19 has the fastest typing speed with 39.6 \ac{WPM} and age group 50-59 has the slowest typing speed with 26.3 \ac{WPM} \cite{Palin2019}.
+This translates to average speed between keystrokes of 303.03 ms for 39.6 \ac{WPM} and 456.65 ms for 26.3 \ac{WPM}.
+This is the expected average duration between keystrokes for the data that has been collected by the application.
 
 \section{Results}
 
-\textit{Note: Summarize the most interesting results of your evaluation (without interpretation). Additional results can be put into the appendix.}
+% \textit{Note: Summarize the most interesting results of your evaluation (without interpretation). Additional results can be put into the appendix.}
 
-Age Group  Unique Conversations
-     0-24                     7
-    25-39                     9
-    40-59                    18
-      60+                     6
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    \textbf{Age Group} & {Conversations} & Message Count & Message Length (Mean) \\
+    \midrule
+    0-24     & 7 & 26 & 19.77 \\
+    25-39    & 9 & 39 & 53.59\\
+    40-59    & 18 & 103 & 48.56\\
+    60+      & 6 & 30 & 32.17 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Amount of Unique Conversations of Each Age Groups}
+    \label{tab:unique_conversations}
+\end{table}
 
-Table shows the number of unique conversations each age group has.
+Table \ref{tab:unique_conversations} shows the number of unique conversations, number of messages sent and the average length of the message sent.
 In total, the application managed to gather data from 40 unique conversations.
-Age group 40-59 has the most unique conversations with 18 conversations.
-While age group 60+ has the least unique conversations with 6 conversations.
+Age group 40-59 has the most unique conversations with 18 conversations and most message sent with 103 messages.
+Meanwhile age group 60+ has the least unique conversations with 6 conversations.
+The least amount of messages sent is by age group 0-24 with 26 messages.
 
-During the processing of the data, keystrokes with duration after the last keystroke longer than 2 seconds are truncated.
-This is done to remove data that is most likely caused by outside factors, such as the user being away from keyboard.
-Furthermore, the one-percenth quantile (<1\% and >99\%) of duration between keystrokes is also truncated.
-This is done to remove outliers of the data.
+Regarding message length average, age group 25-39 has the longest message length average with 53.59 characters.
+Age group 40-59 has the second longest message length average with 48.56 characters.
+Age group 0-24 has the shortest message length average with 19.77 characters.
 
-Here are the results of the data processing, after the data is truncated:
 
-age_group  typing_speed_mean  typing_speed_std  message_length_mean  \
-0      0-24         226.940141        193.746479            87.825397   
-1     25-39         253.154849        123.822882           133.080460   
-2     40-59         357.049651        189.685822           162.877828   
-3       60+         279.315890        132.825992           140.500000   
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{2}{c}{\textbf{Typing Speed}}\\
+    \cmidrule(rl){2-3} \cmidrule(rl){4-5}
+    \textbf{Age Group} & {Mean (ms)} & {Std. Dev (ms)} \\
+    \midrule
+    0-24 & 241.54 & 199.47 \\
+    25-39 & 272.87 & 128.61  \\
+    40-59 & 386.99 & 188.92 \\
+    60+ & 285.72 & 137.01 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Typing Behavior of Users in Different Age Groups}
+    \label{tab:typing_behavior}
+\end{table}
 
-Table shows the average and standard deviation of duration between each keystrokes.
-Age group 0-24 shows the fastest typing speed with an average duration of 226,94 ms between each keystrokes.
-This age group also shows the highest versatility in typing speed with a standard deviation of 193,75 ms.
-The average message length of this age group is 87,83 characters, which is the least among the other groups.
+During the processing of the data, keysrokes duration that took longer than five seconds are truncated.
+This is done to remove data that is most likely caused by trivial factors, such as the user being away from keyboard.
+Table \ref{tab:typing_behavior_one} shows the average and standard deviation of duration between each keystrokes after the data is truncated.
+
+Age group 0-24 shows the fastest typing speed with an average duration of 241,54 ms between each keystrokes.
+This age group also shows the highest versatility in typing speed with a standard deviation of 199,47 ms.
 
 Age group 25-39 shows a slower typing speed than the previous age group.
-This is, however, the second fastest typing speed with an average duration of 253,15 ms between each keystrokes.
-This age group is also the least versatile in typing speed with a standard deviation of 123,82 ms.
+This is, however, the second fastest typing speed with an average duration of 272,87 ms between each keystrokes.
+This age group is also the least variable in typing speed with a standard deviation of 128,61 ms.
 
-Age group 40-59 shows the slowest typing speed with an average duration of 357,05 ms betwen each keystrokes.
-This age group also shows high versatility in typing speed with a standard deviation of 189,69 ms.
-The average message length of this age group is 162,88 characters, which is the most among the other groups.
+Age group 40-59 shows the slowest typing speed with an average duration of 386,99 ms betwen each keystrokes.
+This age group also shows high versatility in typing speed with a standard deviation of 188,92 ms.
 
 Average typing speed of age group 60+ increases compared to age group 40-59.
+This age group has the second slowest typing speed with an average duration of 285,72 ms between each keystrokes.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{2}{c}{\textbf{Typing Speed}}\\
+    \cmidrule(rl){2-3} \cmidrule(rl){4-5}
+    \textbf{Age Group} & {Mean (ms)} & {Std. Dev (ms)} \\
+    \midrule
+    0-24 & 226.94 & 193.75 \\
+    25-39 & 253.15 & 123.82  \\
+    40-59 & 357.05 & 189.69 \\
+    60+ & 279.32 & 132.83 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Typing Behavior of Users in Different Age Groups}
+    \label{tab:typing_behavior_one}
+\end{table}
+
+In this next evaluation, the data is truncated further by removing the one-percenth quantile (\textless1\% and \textgreater99\%) of duration between keystrokes.
+This is done to remove outliers from the data.
+Table \ref{tab:typing_behavior_one} shows the average and standard deviation of duration between each keystrokes after data processing is done.
+
+Age group 0-24 shows the fastest typing speed with an average duration of 226,94 ms between each keystrokes.
+Similar to the previous evaluation, this age group also shows the highest versatility in typing speed with a standard deviation of 193,75 ms.
+
+Age group 25-39 is slightly slower, with an average duration of 253,15 ms between each keystrokes.
+This is, however, still the second fastest typing speed.
+This group also has the least variable typing speed with a standard deviation of 123,82 ms.
+
+Age group 40-59 has the slowest typing speed with an average duration of 357,05 ms betwen each keystrokes.
+Versatility in typing speed of this group is high with a standard deviation of 189,69 ms.
+
+For age group 60+ the average typing speed is slightly faster than age group 40-59.
 This age group has the second slowest typing speed with an average duration of 279,32 ms between each keystrokes.
+Versatility in typing speed of this group is low with a standard deviation of 132,83 ms.
 
-These results align with the expected results.
-Most of the group has an average duration between keystrokes in the range of 300ms to 100ms.
-Only one group, age group 40-59, has an average duration between keystrokes above 300ms.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccc}
+    \toprule
+    \multicolumn{1}{c}{} & \multicolumn{2}{c}{\textbf{Typing Speed}}\\
+    \cmidrule(rl){2-3} \cmidrule(rl){4-5}
+    \textbf{Age Group} & {Mean (ms)} & {Std. Dev (ms)} \\
+    \midrule
+    0-24 & 195.69 & 117.00 \\
+    25-39 & 253.84 & 121.98  \\
+    40-59 & 344.07 & 82.60  \\
+    60+ & 274.03 & 132.96 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Typing Behavior of Users in Different Age Groups}
+    \label{tab:typing_behavior_iqr}
+\end{table}
 
+In this evaluation, the data is processed by removing the \ac{IQR} of duration between keystrokes after removing keystrokes that took longer than five seconds.
+The ranking of the age groups in terms of average typing speed remains the same with the previous evaluation methods.
+However, the ranking of the age groups in terms of versatility in typing speed changes.
+
+Age group 0-24 that was previously the most variable in typing speed is now the second least variable with standard deviation of 117 ms.
+Age group 25-39 that was previously the least variable in typing speed is now the second most variable with standard deviation of 121,98 ms.
+Age group 40-59 that was previously the second most variable in typing speed is now the least variable with standard deviation of 82,60 ms.
+Lastly, age group 60+ that was previously the second least variable in typing speed is now the most variable with standard deviation of 132,96 ms. 
 
 \section{Findings}
 
-\textit{Note: Interpret the results and conclude interesting findings}
+% \textit{Note: Interpret the results and conclude interesting findings}
 
-\section{Discussion}
+The data also shows that the older the age group, the slower the typing speed.
+This is consistent with the general knowledge that the older a person is, the slower their reaction time is.
+There is however an exception with age group 60+.
+This group has a faster typing speed than age group 40-59 in all of the evaluations.
+The fact that this group has the least amount of unique conversations might contribute to this result.
 
-\textit{Note: Discuss the findings in more detail and also review possible disadvantages that you found}
+Leaving out age group 25-39 on the first two evaluations, there is a trend where the older the age group, the less variable the typing speed is.
+The fact that there are only 9 unique conversations from this age group might also be a factor in this result.
+The standard deviation from the evaluation with the \ac{IQR} method shows no noticeable pattern.
 
 \section{Limitations}
 
-\textit{Note: Describe limitations and threats to validity of your evaluation, e.g. reliability, generalizability, selection bias, researcher bias}
+% \textit{Note: Describe limitations and threats to validity of your evaluation, e.g. reliability, generalizability, selection bias, researcher bias}
+One of the limitations of the application that becomes apparent during the evaluation is the incapability of knowing whether the conversation is done by typing on the screen or with a physical keyboard.
+Typing on a physical keyboard is generally faster than typing on a screen \cite{Varcholik2012}.
+This is a limitation of the current version of the application.
+Updating the application to also collect data of the media used while using the application should be considered in the future.
+This will make sure that the data is more accurate and can be used to make more accurate conclusions.
+
+Another limitation is the fact that the data is gathered from a specific group of people and the small sample size.
+This specific group of people might not be representative of the general population, thus impacting the generalizability of the result.
+The small sample size also makes the result less reliable.
+To improve the reliability of the result, the application should be used by a larger group of people.
+
