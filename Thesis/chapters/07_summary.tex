@@ -9,22 +9,134 @@
 The goal of developing a mobile-optimized chat application that collects the user's typing data has been achieved.
 The application has been designed to be user-friendly for all age groups, specifically the elderly.
 Clean architecture and secure coding practices have also been practiced to ensure reliability, scalability, and maintainability.
-However, these characteristics could not be proofen yet and still subject to further testing and evaluation.
-An improvenemt to the application could also be made by collecting data of the media used by the user.
+However, these characteristics could not be proven yet and still subject to further testing and evaluation.
+An improvenemt to the application could also be made by collecting data of the device used by the user.
 This could improve the accuracy of the analysis of the data. 
+
+Analysis of the data collected from the application has also been done.
+The data has been analyzed to conclude interesting findings.
+Some basic patterns have been identified, such as typing speed, keystroke intervals, and error rates.
+These features have been examined with basic statistical methods such as mean, median, and truncation of the outlier of the data.
+There is however still a lot of work to be done to further analyze the data and to identify more complex patterns that could be used to profile the user in an age group.
 
 \subsection{Realized Goals}
 
-\textit{Note: Summarize the achieved goals by repeating the realized requirements or use cases stating how you realized them.}
+Most of the goals set in the beginning of this thesis have been achieved.
+Among the goals that have been achieved are:
+\begin{itemize}
+    \item Developing a mobile-optimized chat application that collects the user's typing data.
+    
+    The application has been successfully developed and is able to collect samples from individuals across different age groups.
+    By utilizing the Llama3 \ac{LLM}, the application is able to elicit response from the users and collect the typing data.
+    Data of keypresses and timestamps have been collected and stored securely in the database for future analysis.
+    Another information that has been successfully collected is the users' age.
+    Anonimity of the data has also been ensured naturally, since personal information other than the age of the user is not collected.
+    Multiple correspondents have used the application, which further ensures the anonimity of the data, since it would be hard to identify the user from the data collected.
+
+    From the evaluation of the collected data, it can be concluded that the data is reliable.
+    The data collected is consistent with the expected data, that was set by taking data from other researches.
+    Some pattern have also been identified from the data that might show some insight into the possibility of using typing pattern to profile the user in an age group.
+
+    \item Practicing clean architecture and secure coding practices to ensure reliability, scalability, and maintainability.
+    
+    One of the main focus of this thesis is to develop a reliable application.
+    Reliability of the application can be seen from the evaluation of the collected data.
+    The data collected is consistent with the expected data, that was set by taking data from other researches.
+    Moreover, the application has been used by users from different age groups and seems to be user-friendly for all age groups, specifically the elderly.
+    By utilizing Docker, the application can also be built and hosted on different environments, such as on the university servers, without much trouble.
+
+    \item Analyzing the gathered typing behavior data to identify patterns or statistical distributions that may correlate with the user's age.
+    
+    The data collected has been analyzed to identify some basic patterns.
+    The data has been examined with basic statistical methods such as mean, median, and truncation of the outlier of the data.	
+    From this processing of the data, some patterns about the average and standard deviation of the typing speed can be seen on the analyzed data.
+    This findings could show some insight into the possibility of using typing pattern to determine or categorize the user in an age group.
+
+\end{itemize}
 
 \subsection{Open Goals}
 
-\textit{Note: Summarize the open goals by repeating the open requirements or use cases and explaining why you were not able to achieve them. \textbf{Important:} It might be suspicious, if you do not have open goals. This usually indicates that you did not thoroughly analyze your problems.}
+% \textit{Note: Summarize the open goals by repeating the open requirements or use cases and explaining why you were not able to achieve them. \textbf{Important:} It might be suspicious, if you do not have open goals. This usually indicates that you did not thoroughly analyze your problems.}
+
+Although most of the goals have been achieved, there are still some open goals that need to be addressed.
+Among the open goals are:
+\begin{itemize}
+    \item Evaluating the accuracy of using typing behavior as a predictor of age.
+    
+    The accuracy of using typing behavior as a predictor of age has not been evaluated yet.
+    Some improvements are still needed to be made to the application to be able to collect data more reliably.
+    The data collected has been analyzed to identify some basic patterns, but the accuracy of these patterns can not be determined yet.
+    The identified patterns need to be consistent enough to be able to reliably be used to estimate the user's age group.
+    This evaluation is crucial to determine the feasibility of using typing pattern to profile the user in an age group.
+
+    \item Real time analysis of the typing pattern.
+    
+    Because of time limitation, the real-time analysis of the typing pattern has not been implemented yet.
+    The application has been developed to collect data of the typing pattern in real-time, but the analysis of the data is still done offline.
+    Real-time analysis of the typing pattern could be useful to give instant feedback to the user.
+    This is an open goal for the future, which hopefully has been brought closer by this thesis.
+
+    \item Creating a maintainable and scalable application.
+    
+    Even though the application has been developed with clean architecture and secure coding practices, the maintainability and scalability still can not be proven yet.
+    It is not yet clear how easy it would be to maintain or improve the application.
+    The ease of scaling the application by adding more servers or functionalities such as real-time analysis is also still unknown.
+
+    \item Further analyzing the data to identify more complex patterns that could be used to profile the user in an age group.
+    
+    The data collected has been analyzed to identify some basic patterns, but there are still a lot of work to be done to further analyze the data.
+    More complex patterns need to be identified to profile the user in an age group.
+    Metrics such as typing speed, keystroke intervals, and error rates will be examined to determine if they can give indication of the user's age group.
+    This further analysis is crucial to determine the feasibility of using typing pattern to profile the user in an age group.
+    
+\end{itemize}
 
 \section{Conclusion}
 
-\textit{Note: Recap shortly which problem you solved in your thesis and discuss your \textbf{contributions} here.}
+% \textit{Note: Recap shortly which problem you solved in your thesis and discuss your \textbf{contributions} here.}
+
+This thesis mainly focuses on exploring the possibility of developing an application for early detection of neurodegenerative diseases.
+To progress towards this goal, the author has developed a mobile-optimized chat application that collects the user's typing data.
+The data gathered from the application has been analyzed to identify patterns or statistical distributions that may correlate with the user's age.
+This can give insights into the feasibility of the aforementioned goal.
+
+The application has been developed with clean architecture and secure coding practices in mind.
+It is also user-friendly for all age groups, specifically the elderly.
+Correspondents ranging from age \textless 25 to age \textgreater 60 have used the application.
+The data gathered by the application corresponds with the expected data, taken from other research.
+Evaluation of the data could give interesting insights and ideas for future researchs on what kind of data can be collected by an application and how it can be analyzed.
+The architecture of the application might also be a reference or inspiration for a more advanced application built for research in this topic.
+
+This thesis contributes by paving the way for a more advanced research on this topic.
+Some insights or idea from this thesis could be valuable for future research in user profiling or cognitive assessments.
 
 \section{Future Work}
 
-\textit{Note: Tell us the next steps  (that you would do if you have more time. be creative, visionary and open-minded here.}
+% \textit{Note: Tell us the next steps  (that you would do if you have more time. be creative, visionary and open-minded here.}
+
+A lot of improvement can be made to the application to further explore the possibility of using application for early detection of neurodegenerative diseases.
+Some of the possible future work are:
+\begin{itemize}
+    \item Gather and evaluate more complete data to be able to make a more accurate analysis.
+    
+    An example of this is to collect data of the device used by the user.
+    Different device could affect the typing pattern of the user.
+    Another data that could be evaluated is the time of the day when the user is using the application.
+    This could also affect the typing pattern of the user, since the user might be more tired at the end of the day.
+    The mother tongue of the user could also be an interesting data to be collected and taken into evaluation, since different language could affect the speed of typing of the user.
+
+    \item Implement real-time analysis of the typing pattern.
+    
+    Real-time analysis of the typing pattern could be useful to give instant feedback to the user.
+    This might also give more interesting insight towards the end goal, since real-time analysis would be important for early detection of neurodegenerative diseases.
+
+    \item Categorize the user in an age group based on the typing pattern.
+    
+    The data collected has been analyzed to identify some basic patterns, but there are still a lot of work to be done to be able to evalute more accurately.
+    A more accurate evaluation is needed to find a way to categorize the user in an age group based on the typing pattern.
+    Based on evaluated data, an algorithm or model could be developed to make an assessment of the user's age based on the typing pattern. 
+
+    \item Analyze typing pattern to detect early signs of neurodegenerative diseases.
+
+\end{itemize}
+
