@@ -70,15 +70,26 @@ Docker allows applications to be deployed separately (frontend, backend, databas
 This makes it easier for the application to be reused and rebuild in other environments, such as on the university servers.
 
 \section{Pattern Recognition and Analysis of Typing Pattern}
-To recognize typing pattern of users from different age groups, a statistical analysis of the typing pattern will be carried out.
 
-TODO: find and explain statistical analysis correlation methods
+After the data is collected, the next step is to analyze the data.
+The main purpose of this analysis is to find patterns in the typing behavior of the users that might correlate with their age group.
+Statistical analysis will be used to find correlation between typing metrics and age group, such as by finding mean and standard derivation of duration between keystrokes and error rates.
+This analysis will be done in three evaluations.
 
-Metrics such as keystroke intervals, typing speed, and error rates will be analyzed to distinguish typing patterns between each age groups. 
+In the evaluation, the data will be truncated to eliminate outliers.
+The first truncation will be done by excluding duration between keystrokes that are more than 5 seconds.
+This is done to eliminate the possibility of the user being distracted or leaving the application.
+The second truncation will be done by removing the one-percenth quantile (\textless1\% and \textgreater99\%) of duration between keystrokes.
+This is done to remove outliers of the data.
 
-TODO: find correlation between typing metrics and age group based on the statistical analysis.
+In a third evaluation, the \ac{IQR} method will be used to find outliers of the data.
+The \ac{IQR} is a measure of statistical dispersion, often used to detect outliers in data. 
+It represents the range within which the central 50\% of the data lies.
+First, similar to the previous two evaluations, the data will be truncated to exclude duration between keystrokes that are more than 5 seconds.
+Then, the \ac{IQR} will be calculated and used to truncated the outliers of the data.
 
-TODO: find pattern recognition method or algo such as Hidden Markov Models (HMM), Dynamic Time Warping (DTW), or Neural Networks 
+\section{Privacy in Data Collection}
 
-\section{Security and Privacy in Data Collection}
-TODO: do we need this part? Privacy is not as important since the data is not from patients. Maybe explain about anonimity
+Anonimity and privacy of the users are insured by not collecting any personal data, other than the age of the user.
+The application will not ask for any personal information, such as name, address, or phone number.
+This, combined with the fact that the application can be accessed by multiple users at the same time, ensures that the data collected is anonymous.

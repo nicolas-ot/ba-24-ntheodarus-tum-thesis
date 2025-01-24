@@ -186,7 +186,7 @@ Versatility in typing speed of this group is low with a standard deviation of 13
     60+ & 274.03 & 132.96 \\
     \bottomrule
     \end{tabular}
-    \caption{Typing speed of users in different age groups with \ac{IQR} method.}
+    \caption{Typing speed of users in different age groups with truncation based on \ac{IQR}.}
     \label{tab:typing_behavior_iqr}
 \end{table}
 
@@ -194,11 +194,12 @@ Versatility in typing speed of this group is low with a standard deviation of 13
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{iqr.png}
-    \caption{Box plot of typing speed of each age group with \ac{IQR} methods.}
+    \caption{Box plot of typing speed of each age group with truncation based on \ac{IQR} methods.}
     \label{box_plot_typing_speed_iqr}
 \end{figure}
 
-In this evaluation, the data is processed by removing the \ac{IQR} of duration between keystrokes after removing keystrokes that took longer than five seconds.
+In this evaluation, the data is processed by removing the outliers (according to \ac{IQR} method) from data of duration between keystrokes.
+This truncation is done after removing keystrokes that took longer than five seconds.
 The ranking of the age groups in terms of average typing speed remains the same with the previous evaluation methods.
 However, the ranking of the age groups in terms of versatility in typing speed changes.
 
@@ -210,11 +211,11 @@ Lastly, age group 60+ that was previously the second least variable in typing sp
 \section{Findings}
 
 % \textit{Note: Interpret the results and conclude interesting findings}
-Backspace percentage average increases the older the age group is, except for age group 60+.
+Backspace percentage average increases the older a person is, except for age group 60+.
 A big jump in backspace percentage average is seen between age group 25-39 and 40-59 from 6.63\% to 15.93\%.
 Afterwards, the backspace percentage average decreases to 3.29\% for age group 60+.
 
-The data shows that the older the age group, the slower the typing speed.
+On all three evaluations, there is a noticeable pattern that the older the person is, the slower their typing speed become.
 This is consistent with the general knowledge that the older a person is, the slower their reaction time is.
 There is however an exception with age group 60+.
 This group has a faster typing speed than age group 40-59 in all of the evaluations.
@@ -222,8 +223,8 @@ The fact that this group has the least amount of unique conversations might cont
 
 On the first two evaluations, i.e. evaluations without the \ac{IQR} method, if the data for age group 25-39 is left out, there is a trend where the older the age group, the less variable the typing speed is.
 Age group 25-39 is, however, an exception to this pattern, as it is the least variable group.
-The fact that there are only 9 unique conversations from age gorup 25-39 might contribute to this result.
-The standard deviation from the evaluation with the \ac{IQR} method shows no noticeable pattern.
+In the evaluation with the \ac{IQR} method, this is reversed.
+In this evaluation, exluding age group 40-59, the older a person is, the more variable their typing speed become.
 
 \section{Limitations}
 

@@ -42,12 +42,6 @@ The proposed system will be split into functional and nonfunctional requirements
 
 % \textit{Note: List and describe all functional requirements of your system. Also mention requirements that you were not able to realize. The short title should be in the form ``verb objective''}
 
-% \begin{itemize}
-% \item [FR1] \textbf{Short Title}: Short Description.
-% \item [FR2] \textbf{Short Title}: Short Description.
-% \item [FR3] \textbf{Short Title}: Short Description.
-% \end{itemize}
-
 The functional requirements (FR) define the specific actions that the system must perform. 
 Below is a list of the primary functional requirements:
 
@@ -388,7 +382,7 @@ To counteract this, the design of the application is focused on \ac{UI} features
 \begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{message_mockup}
-    \caption{\ac{UI} mockup}\label{mockup}
+    \caption{\ac{UI} mockup.}\label{mockup}
 \end{figure}
 
 The final \ac{UI} mockup did not manage to achieve the intended design.
@@ -411,7 +405,42 @@ Once the mockup is established, the development moves to the implementation phas
 \begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{login}
-    \caption{login page}\label{login}
+    \caption{Login page.}\label{login}
 \end{figure}
 
-TODO: explain implementation process, packages choosing decision, decision reasoning, etc.
+The first component that is implemented is the login page shown in Figure~\ref{login}.
+Login page is important to ensure that each user gets their own chat session and is unable to access a chat session that has ended.
+The age of the user is also inputted in this page.
+After the login button is clicked, the user is then directed to the chat page.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=7cm]{simple_app_uncropped}
+    \caption{Chat page.}\label{simple_app}
+\end{figure}
+
+Figure~\ref{simple_app} shows the chat page.
+This chat page is where the user can see the chat history and send a message.
+Design of the chat page has been improved, compared to the mockup design.
+The font is bigger and the text is more spaced out.
+These improvements are done to make the application more user-friendly, especially for the elderly.
+To remove the loading speed during the start of the conversation, the first message from the \ac{LLM} is a default message set on the frontend: "Hellow, how are you?".
+At the same time, the backend server sends the \ac{LLM} the initial message, which is the prompt.
+This allows the \ac{LLM} to load, while the user thinks about the reply for the initial message.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=14cm]{admin_dashboard}
+    \caption{Admin dashboard page.}\label{admin_dashboard}
+\end{figure}
+
+Figure~\ref{admin_dashboard} shows the admin dashboard page.
+This page is used by the admin to see ID that has been used by the user.
+From this page, the admin can also deactivate a chat session, making it inaccessible.
+Some usecases of this feature:
+\begin{itemize}
+    \item If the user has finished the chat session, the admin can deactivate the chat session.
+    \item The admin can give the user a new ID, that has not been accessed before.
+    \item The admin has an easy way to see how many conversations have been created and their creation date, without needing to access the database.
+    \item With the date filter, the admin can see how many conversations have been created in a certain date.
+\end{itemize}

@@ -8,19 +8,21 @@
 
 % \textit{Note: Provide a brief overview of the software architecture and references to other chapters (e.g. requirements analysis), references to existing systems, constraints impacting the software architecture.}
 
-In this chapter, the decision regarding the architecture design of the application will be discussed.
+This chapter explains the decision regarding the architecture design of the application.
 Design of the architecture will be largely based on bridging the conceptual understanding of the application with the concrete technical solution.
 Requirements of the system and existing constraints are also the main deciding factors of the architecture design.
-The system also aims to address the nonfunctional requirements of the application, such as performance and usability, which were mentioned in earlier chapters.
+The system aims to address the nonfunctional requirements of the application, such as performance and usability, which were mentioned in earlier chapters.
 Based on Bruegge and Dutoit's template \cite{bruegge2004object}, the structure of the system is divided into logical components and subsystems.
 
 \section{Design Goals}
 
-\textit{Note: Derive design goals from your nonfunctional requirements, prioritize them (as they might conflict with each other) and describe the rationale of your prioritization. Any trade-offs between design goals (e.g., build vs. buy, memory space vs. response time),
-and the rationale behind the specific solution should be described in this section}
+% \textit{Note: Derive design goals from your nonfunctional requirements, prioritize them (as they might conflict with each other) and describe the rationale of your prioritization. Any trade-offs between design goals (e.g., build vs. buy, memory space vs. response time),
+% and the rationale behind the specific solution should be described in this section}
 
 Design goals of the system are derived from nonfunctional requirements.
 Because of constraints such as time, some of the nonfunctional requirements might not be fulfilled.
+The design goals are prioritized based on the importance of the nonfunctional requirements.
+Design goals of the system are as follows:
 
 \begin{itemize} 
     \item \textbf{Usability and Accessibility}:
@@ -89,7 +91,7 @@ The backend is responsible for processing the typing pattern data and generating
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{class_frontend.png}
-    \caption{UML class diagram of the frontend architecture of the user interface}
+    \caption{UML class diagram of the frontend architecture of the user interface.}
     \label{class_frontend}
 \end{figure}
 
@@ -107,12 +109,64 @@ If the validation is successful, the data will be sent to the backend.
 On the backend side, the session ID is validated by checking whether the session ID is alredy deactivated.
 The deactivated attribute is a boolean attribute in the database that can be managed either through the admin interface or by directly changing the value in the database.
 
+In the chat page, the user can see the chat history and type a message.
+Directly after the user pass the login page, the user will be greeted by the \ac{LLM}.
+This initial message from the \ac{LLM} is actually a default message set on the frontend.
+This is done to remove the initial loading time of the \ac{LLM} response.
+At the same time, the backend will boot up the \ac{LLM} by sending the initial prompt.
+This makes it so that while the user thinks about the response to the initial message, the \ac{LLM} can load.
+Without this feature, the user would have to wait for the \ac{LLM} to load before the user can see the initial message.
+
+While the user is typing, the frontend will capture the typing pattern data.
+Each keypress made by the user is recorded and stored in an array.
+After the user presses the "Enter" key, the array of typing pattern data will be sent to the backend as shown below:
+
+\begin{verbatim}
+    [
+      {
+        "timestamp": "2024-10-29T13:40:35.966Z", 
+        "pressedKey": "i", 
+        "timeSinceLastKey": 0.0
+      },
+      {
+        "timestamp": "2024-10-29T13:40:36.123Z", 
+        "pressedKey": "m", 
+        "timeSinceLastKey": 157.0
+      }
+      {
+        "timestamp": "2024-10-29T13:40:36.330Z", 
+        "pressedKey": " ", 
+        "timeSinceLastKey": 207.0
+      }
+      {
+        "timestamp": "2024-10-29T13:40:36.447Z", 
+        "pressedKey": "f", 
+        "timeSinceLastKey": 117.0
+      }
+      {
+        "timestamp": "2024-10-29T13:40:36.504Z", 
+        "pressedKey": "i", 
+        "timeSinceLastKey": 57.0
+      }
+      {
+        "timestamp": "2024-10-29T13:40:36.592Z", 
+        "pressedKey": "n", 
+        "timeSinceLastKey": 88.0
+      }
+      {
+        "timestamp": "2024-10-29T13:40:36.701Z", 
+        "pressedKey": "e", 
+        "timeSinceLastKey": 109.0
+      }
+    ]
+    \end{verbatim}
+
 \subsubsection{Admin Interface}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{class_frontend_admin.png}
-    \caption{UML class diagram of the frontend architecture of the admin interface}
+    \caption{UML class diagram of the frontend architecture of the admin interface.}
     \label{class_frontend_admin}
 \end{figure}
 
@@ -125,7 +179,7 @@ After the "Login" button is clicked, the inputted password will be checked again
 
 The dashboard component helps manage the chat sessions by providing these functionalities:
 \begin{itemize}
-    \item View the list of initialised chat sessions or initialised chat sessions that are still active
+    \item View the list of all initialised chat sessions or initialised chat sessions that are still active.
     \item Deactivate a chat session
     \item Initialise a new chat session by inputting the ID of the chat session
     \item Sort the chat sessions by added date, ID, or deactivated date to ease the process of finding a specific chat session
@@ -138,7 +192,7 @@ The dashboard component helps manage the chat sessions by providing these functi
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{class_backend.png}
-    \caption{UML class diagram of the backend architecture of the main controller}
+    \caption{UML class diagram of the backend architecture of the main controller.}
     \label{class_backend}
 \end{figure}
 
@@ -151,7 +205,7 @@ This controller is responsible for handling login, initialisation of a chat sess
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{class_backend_admin.png}
-    \caption{UML class diagram of the backend architecture of the admin controller}
+    \caption{UML class diagram of the backend architecture of the admin controller.}
     \label{class_backend_admin}
 \end{figure}
 
