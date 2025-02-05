@@ -131,7 +131,7 @@ The following scenario describes an ideal scenario that might be achieved in a f
     \end{minipage}
     \tabularnewline
     \bottomrule
-    \caption{Neurodegenerative diseases detection using typing pattern analysis}
+    \caption{Neurodegenerative diseases detection using typing pattern analysis.}
     \label{neurodegenerativeDiseaseDetection}
 \end{longtable}
 
@@ -144,7 +144,7 @@ It is the main purpose and functionality of the application.
 
 \begin{longtable}{p{0.2387\textwidth} p{0.7\textwidth}}
     \toprule
-    \raggedright \textit{Scenario name} & \closeline{ageGroupDetection}\tabularnewline
+    \raggedright \textit{Scenario name} & \closeline{keystrokeAnalysis}\tabularnewline
     \hline
     \endhead
     \raggedright \textit{Participating actor instances} & \raggedright bob: User\tabularnewline
@@ -152,15 +152,40 @@ It is the main purpose and functionality of the application.
     \raggedright \textit{Flow of events}&
     \begin{minipage}[t]{0.7\textwidth}
         \begin{itemize}[noitemsep,leftmargin=*,topsep=0pt,parsep=0pt,partopsep=0pt]
-               \item[1.] Bob, a man in his late 50, uses the application to chat with a \ac{LLM}.
+               \item[1.] Bob uses the application to chat with a \ac{LLM}.
                The application logs and stores Bob's keystrokes. 
                \item[2.] This keystrokes data is then later analyzed.
-               After the analysis is done, it is correctly inferred that Bob is in the age group of 50 to 60 years old.
+               Along with keystrokes data from other users, Bob's keystrokes data is analysed.
+               After the analysis, some interesting patterns of the data are identified.
        \end{itemize}
     \end{minipage}
     \tabularnewline
     \bottomrule
-    \caption{Age group detection using typing pattern analysis}
+    \caption{Keystroke data collection and analysis.}
+    \label{keystrokeCollectionAnalysis}
+\end{longtable}
+
+\begin{longtable}{p{0.2387\textwidth} p{0.7\textwidth}}
+    \toprule
+    \raggedright \textit{Scenario name} & \closeline{sessionManagement}\tabularnewline
+    \hline
+    \endhead
+    \raggedright \textit{Participating actor instances} & \raggedright bob: Researcher\tabularnewline
+    \hline
+    \raggedright \textit{Flow of events}&
+    \begin{minipage}[t]{0.7\textwidth}
+        \begin{itemize}[noitemsep,leftmargin=*,topsep=0pt,parsep=0pt,partopsep=0pt]
+               \item[1.] Bob is a researcher that wants to collect and analyze typing pattern data of users using the application.
+               \item[2.] Bob finds some correspondents and asks them to use the application.
+               \item[3.] During this data collection, Bob opens the admin dashboard page to view how many chat sessions are already created.
+               Bob does not need to access the database directly, since the admin page already shows the data in a user-friendly way.
+               \item[4.] Some of the correspondents are already finished with the chat session.
+               To protect their privacy, Bob locks the chat session of these correspondents from the admin dashboard page.
+       \end{itemize}
+    \end{minipage}
+    \tabularnewline
+    \bottomrule
+    \caption{Data collection session management.}
     \label{ageGroupDetection}
 \end{longtable}
 
@@ -174,7 +199,7 @@ The following use case model show the interactions between the user, the server 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{usecase}
-    \caption{UML use case diagram of the chatting feature}
+    \caption{UML use case diagram of the chatting feature.}
 \end{figure}
 
 \begin{longtable}{p{0.2387\textwidth} p{0.7\textwidth}}
@@ -186,11 +211,11 @@ The following use case model show the interactions between the user, the server 
 \hline
 \raggedright \textit{Flow of events} & \begin{minipage}[t]{0.7\textwidth}
 	\leftenum{1.}{User inputs age and chat ID.}
-	\rightenum{2.}{Backend server confirms that the ID is valid and accessible.}
-	\rightenum{3.}{Backend server checks that no corresponding session with this ID has been created and initialises a new chat session.}
-	\rightenum{3.}{Backend server gives a prompt to \ac{LLM}.}
-	\leftenum{4.}{\ac{LLM} loads and send the first message after it is finished loading.}
-	\rightenum{5.}{User reads the message from the \ac{LLM}}
+	\leftenum{2.}{Backend server confirms that the ID is valid and accessible.}
+	\leftenum{3.}{Backend server checks that no corresponding session with this ID has been created and initialises a new chat session.}
+	\leftenum{4.}{Backend server gives a prompt to \ac{LLM}.}
+	\leftenum{5.}{\ac{LLM} loads and send the first message after it is finished loading.}
+	\leftenum{6.}{User reads the message from the \ac{LLM}}
 
 \end{minipage}
 \smallskip\tabularnewline
@@ -206,7 +231,7 @@ The following use case model show the interactions between the user, the server 
     \item The server should send a prompt to the \ac{LLM}, wait for the response, and forward the response of the \ac{LLM} to the user.
     }\tabularnewline
  \bottomrule
-\caption{Use case initialization of chat session}
+\caption{Use case initialization of chat session.}
 \label{useCaseInitialization}
 \end{longtable}
 
@@ -219,10 +244,10 @@ The following use case model show the interactions between the user, the server 
     \hline
     \raggedright \textit{Flow of events} & \begin{minipage}[t]{0.7\textwidth}
         \leftenum{1.}{User inputs age and chat ID.}
-        \rightenum{2.}{Backend server confirms that the ID is valid and accessible.}
-        \rightenum{2.}{Backend server checks that there exists already a chat session with the corresponding ID.}
-        \rightenum{3.}{Backend server loads all the messages history of this chat session and sends it to the user.}
-        \leftenum{4.}{User reads the chat history and continues the chat as they left it.}
+        \leftenum{2.}{Backend server confirms that the ID is valid and accessible.}
+        \leftenum{3.}{Backend server checks that there exists already a chat session with the corresponding ID.}
+        \leftenum{4.}{Backend server loads all the messages history of this chat session and sends it to the user.}
+        \leftenum{5.}{User reads the chat history and continues the chat as they left it.}
     
     \end{minipage}
     \smallskip\tabularnewline
@@ -238,7 +263,7 @@ The following use case model show the interactions between the user, the server 
     \item The server should send the chat history data to the user with right information of whether a message is sent by the user or by the \ac{LLM}.
     }\tabularnewline
     \bottomrule
-    \caption{Use case loading of an alredy existing chat session}
+    \caption{Use case loading of an alredy existing chat session.}
     \label{useCaseLoading}
 \end{longtable}
 
@@ -252,10 +277,10 @@ The following use case model show the interactions between the user, the server 
     \raggedright \textit{Flow of events} & \begin{minipage}[t]{0.7\textwidth}
         \leftenum{1.}{User types a response to the last message from the \ac{LLM}.}
         \leftenum{2.}{User sends the message.}
-        \rightenum{3.}{Backend server saves the message and its keystroke data in the database.}
-        \rightenum{4.}{Backend server sends the message to the \ac{LLM}.}
+        \leftenum{3.}{Backend server saves the message and its keystroke data in the database.}
+        \leftenum{4.}{Backend server sends the message to the \ac{LLM}.}
         \leftenum{5.}{\ac{LLM} responses to the user's message.}
-        \rightenum{6.}{Backend server saves the message from the \ac{LLM} in the database and sends it to the user.}
+        \leftenum{6.}{Backend server saves the message from the \ac{LLM} in the database and sends it to the user.}
     
     \end{minipage}
     \smallskip\tabularnewline
@@ -271,7 +296,7 @@ The following use case model show the interactions between the user, the server 
     \item The server should wait for the \ac{LLM} to response, . 
     }\tabularnewline
     \bottomrule
-    \caption{Use case user sends a message}
+    \caption{Use case user sends a message.}
     \label{useCaseSendMessage}
 \end{longtable}
 
@@ -287,7 +312,7 @@ The following diagram shows the key objects and their relations with other objec
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{classuml}
-    \caption{UML class diagram of the application domain}
+    \caption{UML class diagram of the application domain.}
 \end{figure}
 
 \textbf{Classes}: Message, Conversation, Keystroke
@@ -349,7 +374,7 @@ This bring the application back to the state of waiting for the user to send a m
 \begin{figure}[h!]
     \centering
     \includegraphics[width=13cm]{state}
-    \caption{UML class diagram of the application domain}\label{state}
+    \caption{UML class diagram of the application domain.}\label{state}
 \end{figure}
 
 \subsection{User Interface}
@@ -382,7 +407,7 @@ To counteract this, the design of the application is focused on \ac{UI} features
 \begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{message_mockup}
-    \caption{\ac{UI} mockup.}\label{mockup}
+    \caption{\ac{UI} mockup of the chat page.}\label{mockup}
 \end{figure}
 
 The final \ac{UI} mockup did not manage to achieve the intended design.
@@ -405,7 +430,7 @@ Once the mockup is established, the development moves to the implementation phas
 \begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{login}
-    \caption{Login page.}\label{login}
+    \caption{Implementation of the login page.}\label{login}
 \end{figure}
 
 The first component that is implemented is the login page shown in Figure~\ref{login}.
@@ -416,7 +441,7 @@ After the login button is clicked, the user is then directed to the chat page.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{simple_app_uncropped}
-    \caption{Chat page.}\label{simple_app}
+    \caption{Implementation of the chat page.}\label{simple_app}
 \end{figure}
 
 Figure~\ref{simple_app} shows the chat page.

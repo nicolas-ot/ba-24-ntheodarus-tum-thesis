@@ -119,47 +119,52 @@ Without this feature, the user would have to wait for the \ac{LLM} to load befor
 
 While the user is typing, the frontend will capture the typing pattern data.
 Each keypress made by the user is recorded and stored in an array.
-After the user presses the "Enter" key, the array of typing pattern data will be sent to the backend as shown below:
+After the user presses the "Enter" key, the array of typing pattern data will be sent to the backend.
+% Describe the data structure of the typing pattern data
+The typing pattern data is an array of JSON object that contains the timestamp of the keypress, the pressed key, and the time since the last keypress.
+Attribute timestamp contains the exact time when the key is pressed, using the JavaScript function Date.now().
+Attribute pressedKey. as the name suggests, contains the key that is pressed by the user.
+Attribute timeSinceLastKey contains the time difference in milliseconds between the last key press and the current key press.
 
-\begin{verbatim}
-    [
-      {
-        "timestamp": "2024-10-29T13:40:35.966Z", 
-        "pressedKey": "i", 
-        "timeSinceLastKey": 0.0
-      },
-      {
-        "timestamp": "2024-10-29T13:40:36.123Z", 
-        "pressedKey": "m", 
-        "timeSinceLastKey": 157.0
-      }
-      {
-        "timestamp": "2024-10-29T13:40:36.330Z", 
-        "pressedKey": " ", 
-        "timeSinceLastKey": 207.0
-      }
-      {
-        "timestamp": "2024-10-29T13:40:36.447Z", 
-        "pressedKey": "f", 
-        "timeSinceLastKey": 117.0
-      }
-      {
-        "timestamp": "2024-10-29T13:40:36.504Z", 
-        "pressedKey": "i", 
-        "timeSinceLastKey": 57.0
-      }
-      {
-        "timestamp": "2024-10-29T13:40:36.592Z", 
-        "pressedKey": "n", 
-        "timeSinceLastKey": 88.0
-      }
-      {
-        "timestamp": "2024-10-29T13:40:36.701Z", 
-        "pressedKey": "e", 
-        "timeSinceLastKey": 109.0
-      }
-    ]
-    \end{verbatim}
+% \begin{verbatim}
+%     [
+%       {
+%         "timestamp": "2024-10-29T13:40:35.966Z", 
+%         "pressedKey": "i", 
+%         "timeSinceLastKey": 0.0
+%       },
+%       {
+%         "timestamp": "2024-10-29T13:40:36.123Z", 
+%         "pressedKey": "m", 
+%         "timeSinceLastKey": 157.0
+%       }
+%       {
+%         "timestamp": "2024-10-29T13:40:36.330Z", 
+%         "pressedKey": " ", 
+%         "timeSinceLastKey": 207.0
+%       }
+%       {
+%         "timestamp": "2024-10-29T13:40:36.447Z", 
+%         "pressedKey": "f", 
+%         "timeSinceLastKey": 117.0
+%       }
+%       {
+%         "timestamp": "2024-10-29T13:40:36.504Z", 
+%         "pressedKey": "i", 
+%         "timeSinceLastKey": 57.0
+%       }
+%       {
+%         "timestamp": "2024-10-29T13:40:36.592Z", 
+%         "pressedKey": "n", 
+%         "timeSinceLastKey": 88.0
+%       }
+%       {
+%         "timestamp": "2024-10-29T13:40:36.701Z", 
+%         "pressedKey": "e", 
+%         "timeSinceLastKey": 109.0
+%       }
+%     ]
+%     \end{verbatim}
 
 \subsubsection{Admin Interface}
 
